@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Fibonacci Series</title>
+</head>
+<body>
+
+</body>
+</html>
+
+
+
+
+
+
+<script>
+var fibonacci = [];
+fibonacci = [0,1];
+var limit=prompt("How many numbers do you want?");
+var i;
+
+if (limit <3)
+{
+	document.write("That number is small");
+}
+
+for (i=2; i< limit; i++)
+
+{
+     fibonacci[i] = fibonacci[i-1] + fibonacci[i-2];
+}
+
+for (i=0; i<limit; i++)
+
+{ document.write (fibonacci[i] + " "); }
+
+</script>
