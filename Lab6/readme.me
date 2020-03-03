@@ -4,10 +4,156 @@
            .blacktext { color: black; }
            .redtext { color: red; } 
         </style>
+
         <script>
-            
+                 function $(id) {
+                     return document.getElementById(id);
+                 }
+            window.onload = function() {
+                     //set up event for maritalStatus drop down
+                      $('mstatus').onchange = mstatusChange;
+
+                      //set up event for Submit button
+                       $('submit_form').onclick = processForm;
+
+                        //set focus to fname field
+                }
+
+                function mstatusChange() {
+
+                //get the value from mstatus drop down
+                //disable or enable spouse name based on value
+
+                if (mstatus == 'Married')
+                $('sname').disabled = false;
+                else
+                $('sname').disabled = true;
+                }
+                
+                function processForm() {
+                //get all the form values
+
+                    var lname = $('lname').value;
+                    var fname = $('fname').value;
+                //repeat for each field on form
+
+                //Set a flag saying everything entered is correct
+                var formGood = true;
+
+                //Check the fields on the form if a field fails, then set the formGood flag to false  set the class for the label to red
+
+                //else    
+                //set the class for the label to black (just n case it had been set to red earlier)
+
+                if (lname == "") {
+                    formGood = false;
+                $('lnameLabel').className = 'redtext';
+                } else {
+                $('lnameLabel').className = 'blacktext';
+                }
+
+                if (fname == "") {
+                    formGood = false;
+                $('fnameLabel').className = 'redtext';
+                } else {
+                $('fnameLabel').className = 'blacktext';
+                }
+
+                if (address== "") {
+                    formGood = false;
+                $('addressLabel').className = 'redtext';
+                } else {
+                $('addressLabel').className = 'blacktext';
+                }
+
+                if (city== "") {
+                    formGood = false;
+                $('cityLabel').className = 'redtext';
+                } else {
+                $('cityLabel').className = 'blacktext';
+                }
+
+                if (zipcode == "") {
+                    formGood = false;
+                $('zipcodeLabel').className = 'redtext';
+                } else {
+                $('zipcodeLabel').className = 'blacktext';
+                }
+
+                if (state == "") {
+                    formGood = false;
+                $('stateLabel').className = 'redtext';
+                } else {
+                $('stateLabel').className = 'blacktext';
+                }
+
+                if (dob == "") {
+                    formGood = false;
+                $('dobLabel').className = 'redtext';
+                } else {
+                $('dobLabel').className = 'blacktext';
+                }
+
+                if (state== "") {
+                    formGood = false;
+                $('stateLabel').className = 'redtext';
+                } else {
+                $('stateLabel').className = 'blacktext';
+                }
+                
+                if (sname== "") {
+                    formGood = false;
+                $('snameLabel').className = 'redtext';
+                } else {
+                $('snameLabel').className = 'blacktext';
+                }
+
+                if (email== "") {
+                    formGood = false;
+                $('emailLabel').className = 'redtext';
+                } else {
+                $('emailLabel').className = 'blacktext';
+                }
+
+                if (phone== "") {
+                    formGood = false;
+                $('phoneLabel').className = 'redtext';
+                } else {
+                $('phoneLabel').className = 'blacktext';
+                }
+
+                if (password2== "") {
+                    formGood = false;
+                $('password2Label').className = 'redtext';
+                } else {
+                $('password2Label').className = 'blacktext';
+                }
+
+                //check that the passwords are the same
+
+                if (password != password2) {
+                formGood = false;
+                $("passwordLabel").className = 'redtext';
+                //set the password2 label red also
+                    } else {
+                 //set the label classes to blacktext
+                    }
+
+                //if formGood is still true then
+                 //submit the form
+                //else
+                //display error message
+
+                if (formGood) {
+                $("myForm").submit();
+                } else {
+                //$("errorMsg").innerHTML = "Please fix the errors below";
+                    }
+             }
+
         </script>
     </head>
+
     <body>
         <main>
             <h2>IT230 LAB 6 - Form Processing Solutions</h2>
@@ -15,21 +161,21 @@
             <form id="myForm" action="http://www.waynedog.net/formreader.php" method="post">
             <table>
                 <tr>
-                    <td><label for="fname" id="fnamelabel" class="blacktext">First Name</label></td>
+                    <td><label for="fname" id="fnameLabel" class="blacktext">First Name</label></td>
                     <td><input type="text" id="fname" class="fname"></td>
-                    <td><label for="lname" id="lnamelabel" class="blacktext">Last Name</label></td>
+                    <td><label for="lname" id="lnameLabel" class="blacktext">Last Name</label></td>
                     <td><input type="text" id="lname" class="lname"></td>
                 </tr>
                 <tr>
-                    <td><label for="address" id="addresslabel" class="blacktext">Address</label></td>
+                    <td><label for="address" id="addressLabel" class="blacktext">Address</label></td>
                     <td><input type="text" id="address" class="address"></td>
-                    <td><label for="address2" id="address2label" class="blacktext">Suitye or Apt.</label></td>
+                    <td><label for="address2" id="address2Label" class="blacktext">Suitye or Apt.</label></td>
                     <td><input type="text" id="address2" class="address2"></td>
                 </tr>
                 <tr>
-                    <td><label for="city" id="citylabel" class="blacktext">City</label></td>
+                    <td><label for="city" id="cityLabel" class="blacktext">City</label></td>
                     <td><input type="text" id="city" class="city"></td>
-                    <td><label for="state" id="statelabel" class="blacktext">state</label></td>
+                    <td><label for="state" id="stateLabel" class="blacktext">state</label></td>
                     <td>
                         <select name="state" id="state">
                             <option value="AL">Alabama</option>
@@ -88,20 +234,20 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="zipcode" id="zipcodelabel" class="blacktext"> ZIP CODE</label></td>
+                    <td><label for="zipcode" id="zipcodeLabel" class="blacktext"> ZIP CODE</label></td>
                     <td><input type="text" name="zipcode" id="zipcode"></td>
             </tr>
             <tr>
-                <td><label for="gender" id="genderlabel" class="blacktext">Gender</label></td>
+                <td><label for="gender" id="genderLabel" class="blacktext">Gender</label></td>
             <td>
                     <input type="radio" name="gender" id="male" value="male" checked>Male
                     <input type="radio" name="gender" id="female" value="female" checked>Female
             </td>
-                    <td><label for="dob" id="doblabel" class="blacktext"> Birthday</label></td>
+                    <td><label for="dob" id="dobLabel" class="blacktext"> Birthday</label></td>
                     <td><input type="date" name="dob" id="dob"></td>
             </tr>
             <tr>
-                <td><label for="mstatus" id="mstatuslabel" class="blacktext">Marital Status</label></td>
+                <td><label for="mstatus" id="mstatusLabel" class="blacktext">Marital Status</label></td>
             <td>
                 <select name="mstatus" id="mstatus">
                      <option value="">Choose one</option>
@@ -109,19 +255,19 @@
                      <option value="married">Married</option>
                 </select>    
             </td>
-                    <td><label for="sname" id="snamelabel" class="blacktext">Spouse Name</label></td>
-                    <td><input type="Text" name="sanme" id="sname"></td>
+                    <td><label for="sname" id="snameLabel" class="blacktext">Spouse Name</label></td>
+                    <td><input type="Text" name="sname" id="sname"></td>
             </tr>
             <tr>
-                <td><label for="email" id="emaillabel" class="blacktext">Email</label></td>
+                <td><label for="email" id="emailLabel" class="blacktext">Email</label></td>
                 <td><input type="text" id="email" class="email"></td>
-                <td><label for="Phone" id="phonelabel" class="blacktext">Phone</label></td>
+                <td><label for="Phone" id="phoneLabel" class="blacktext">Phone</label></td>
                 <td><input type="text" id="phone" class="phone"></td>
             </tr>
             <tr>
-                <td><label for="password" id="passwordlabel" class="blacktext">Password</label></td>
+                <td><label for="password" id="passwordLabel" class="blacktext">Password</label></td>
                 <td><input type="password" id="password" class="password"></td>
-                <td><label for="password2" id="password2label" class="blacktext">Confirm Password</label></td>
+                <td><label for="password2" id="password2Label" class="blacktext">Confirm Password</label></td>
                 <td><input type="Password" id="password2" class="password2"></td>
             </tr>
             <tr>
@@ -138,4 +284,3 @@
     </body>
 
 </html>
-
