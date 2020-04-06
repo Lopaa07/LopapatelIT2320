@@ -1,1 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <style>
+      .hidden{
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="summonGif">ClickMe!</div>
+    <img src="https://learn-us-east-1-prod-fleet01-xythos.s3.us-east-1.amazonaws.com/5d2dddd0100bb/6509771?response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27lab9-guy-walking.gif&response-content-type=image%2Fgif&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20200405T181906Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=AKIAZH6WM4PLTYPZRQMY%2F20200405%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=71261a20603f646418ad0d4949ef4172d9e83813f2f5fbd7320d8446f1eb8c9e
 
+" class="hidden" id="gif">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $.fn.center = function () {
+        this.css("position","absolute");
+        this.animate({left: '650px'},3000);
+          this.animate({left: '-90px'},3000);
+        
+      }
+
+      $("#summonGif").on("click", function(){
+        $("#gif").fadeIn(1000).center();
+        setTimeout(function(){
+          $("#gif").fadeOut()
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
