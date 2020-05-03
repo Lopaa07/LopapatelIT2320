@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+
+$(document).ready(function(){
+
+	
+
+   function ak(a){
+
+	 var b = 273.15;
+
+	 var c = a-b;
+
+	 var d = (9/5);
+
+	 var e = (c*d) + 32;
+
+	 //(K – 273.15) * 9/5 + 32
+
+	 return parseFloat(e).toFixed(2);
+
+
+
+   }
+
+
+
+  $("button").click(function(){
+
+	var zipCode = $("#zipcode").val();
+
+	if( zipCode == ""){
+
+		alert("Please ennter valid ZipCode");
+
+		return false;
+
+	}
+
+	var url = "http://api.openweathermap.org/data/2.5/weather?zip="+ zipCode +"&APPID=833b1012af16ca2db55ef3109fe8a24a&parameter=value";
+
+    $.get(url, function(data, status){
+
+		$("#city").text(data.name);
+
+		$("#temp").text(ak(data.main.temp));
+
+		$("#cond").text(data.weather[0].main + "(" + (data.weather[0].description) + ")");
+
+		$("#windspeed").text(data.wind.speed);
+
+		$("#Humidity").text(data.main.humidity);
+
+		$("#tempmin").text(ak(data.main.temp_min));
+
+		$("#tempmax").text(ak(data.main.temp_max));
+
+    });
+
+  });
+
+});
+
+</script>
+
+</head>
+
+<body>
+
+	<div class="container">
+
+	  <h2><u>Lab Task- 12 : OpenWeatherMap</u></h2>
+
+	  <form action="#">
+
+		<div class="form-group">
+
+		  <label for="email">ZipCode:</label>
+
+		  <input type="email" class="form-control" id="zipcode" placeholder="Enter ZipCode" name="zipcode">
+
+		</div>
+
+		<button type="button" class="btn btn-default">View Data</button>
+
+	  </form>
+
+	  <br/>
+
+	  <table class="table table-bordered">
+
+		<thead>
+
+		  <tr>
+
+			<th>Name</th>
+
+			<th>Value</th>
+
+		   
+
+		  </tr>
+
+		</thead>
+
+		<tbody>
+
+		  <tr>
+
+			<td>City</td>
+
+			<td id="city"></td>
+
+			
+
+		  </tr>
+
+		  <tr>
+
+			<td>Temperature (F)</td>
+
+			<td id="temp"></td>
+
+			
+
+		  </tr>
+
+		   <tr>
+
+			<td>Current Condition</td>
+
+			<td id="cond"></td>
+
+			
+
+		  </tr>
+
+		  <tr>
+
+			<td>WindSpeed & Direction</td>
+
+			<td id="windspeed"></td>
+
+			
+
+		  </tr>
+
+		   <tr>
+
+			<td>Humidity</td>
+
+			<td id="Humidity"></td>
+
+		  </tr>
+
+		   <tr>
+
+			<td>Temp Min</td>
+
+			<td id="tempmin"></td>
+
+		  </tr>
+
+		  <tr>
+
+			<td>Temp Max</td>
+
+			<td id="tempmax"></td>
+
+		  </tr>
+
+		</tbody>
+
+	  </table>
+
+	</div>
+
+</body>
+
+</html>
+
 
